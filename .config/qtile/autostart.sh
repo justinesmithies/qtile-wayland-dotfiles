@@ -9,11 +9,18 @@ __running() { pidof "$1" >/dev/null 2>&1 ;}
 
 systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
-# Apps to autostart
+# Kanshi
 
 if cmd_exist kanshi ; then
     __kill kanshi
     __start kanshi
+fi
+
+# wlsunset
+
+if cmd_exist wlsunset ; then
+    __kill wlsunset
+    __start wlsunset -l 57.4 -L -1.9
 fi
 
 # Authentication dialog
